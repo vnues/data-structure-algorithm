@@ -114,7 +114,9 @@ function reverse(head) {
   let last = reverse(head.next); // ! 假设这里反转好了
   // ! head.next.next为null 反转链表的后 这个节点就是指向null 再把头节点拼接上去 head.next.next = head
   // ! 当链表递归反转之后，新的头结点是 last，而之前的 head 变成了最后一个节点，别忘了链表的末尾要指向 null
+  debugger
   console.log('head.next',head.next) // head.next listNode { value: 2, next: null } 最后
+  // 1==>2==>3 1依旧可以指向2
   head.next.next = head;
   // console.log("head.next.next", head.next.next);
   head.next = null;

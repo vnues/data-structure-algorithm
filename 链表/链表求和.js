@@ -1,6 +1,6 @@
 class listNode {
   constructor(val) {
-    this.value = val;
+    this.val = val;
     this.next = null;
   }
 }
@@ -36,7 +36,7 @@ class MyLinkedList {
     }
     while (cur) {
       if (currentIndex === index) {
-        return cur.value;
+        return cur.val;
       }
       cur = cur.next;
       currentIndex++;
@@ -101,35 +101,51 @@ class MyLinkedList {
   }
 }
 
-let successor =null
 
-function reverseN(head,n){
-  // 终止条件 是开始的判断 也是临界值 决定栈底部
-  if(n===1){
-    successor = head.next
-    return head
-  }
-  // 以 head.next 为起点，需要反转前 n - 1 个节点
-  last =reverseN(head.next,n-1)
-  head.next.next=head // !真正的操作 实现反转的代码 1==>2==>3反转 先反转 2 3再反转 32与1 拆解这些步骤 
-  // 让反转之后的 head 节点和后面的节点连起来
-  head.next=successor
-  return last 
-}
+const list1 = new MyLinkedList();
 
-
-const list = new MyLinkedList();
-
+list.addAtTail(7);
 list.addAtTail(1);
-list.addAtTail(2);
-list.addAtTail(3);
-list.addAtTail(4);
-list.addAtTail(5);
 list.addAtTail(6);
 
-// let res = reverse(list.head);
+const list2 = new MyLinkedList();
 
-console.log('res',res)
+list.addAtTail(5);
+list.addAtTail(9);
+list.addAtTail(2);
 
-// ! 拼接是需要遍历的
-// ! 通过指针解决
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+ var addTwoNumbers = function(l1, l2) {
+  let count =0
+  // 判断是||
+  let l3 = head = new ListNode()
+  while(l1||l2){
+    l1Val=l1?l1.val:0
+    l2Val=l2?l2.val:0
+    // 优雅的写法
+    let value=l1Val+l2Val+count
+    count=0
+    if(value>=10){
+        count=Math.floor(value/10)
+    }
+    l3.next=new ListNode(value%10)
+    l1=l1&&l1.next
+    l2=l2&&l2.next
+    l3=l3.next
+  }
+  if(count!==0){
+    l3.next=new ListNode(count)
+  }
+  return head.next
+};
