@@ -149,3 +149,7 @@ list.addAtTail(2);
   }
   return head.next
 };
+
+const str="["& [业务员租赁提成.员工工号] &","& [业务员租赁提成.员工姓名] &"]"
+
+const regex=/^[]\$/
