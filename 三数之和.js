@@ -37,7 +37,7 @@ function threeSum(nums,target){
       for(let j=0;j<tuples.length;j++){
         res.push([...tuples[j],nums[i]])
       }
-      // 因为i+1 也不用担心for循环i++ 因为i+1
+      // 去重
       while(i<nums.length-1&&nums[i]===nums[i+1]){i++}
     }
     return res
