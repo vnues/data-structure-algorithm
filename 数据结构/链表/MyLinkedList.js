@@ -21,26 +21,26 @@ deleteAtIndex(index)：如果索引 index 有效，则删除链表中的第 inde
 
 // ✅的写法
 
-class listNode {
+class ListNode {
     constructor(val) {
         this.value = val
         this.next = null
     }
 }
-class MyLinkedList {
+class LinkedList {
     constructor() {
         this.size = 0
         this.head = null
     }
     addAtHead(val) {
         let originHead = this.head
-        this.head = new listNode(val)
+        this.head = new ListNode(val)
         this.head.next = originHead
         this.size++
     }
     addAtTail(val) {
         let last = this.head
-        let node = new listNode(val)
+        let node = new ListNode(val)
         while (last && last.next) {
             last = last.next
         }
@@ -76,7 +76,7 @@ class MyLinkedList {
             } else {
                 let cur = this.head
                 let next
-                let node = new listNode(val)
+                let node = new ListNode(val)
                 let currentIndex = 0
                 while (cur) {
                     if (currentIndex === index - 1) {
