@@ -1,3 +1,5 @@
+
+
 // 阶解题思路
 // 挑选的基准值为数组中间的值
 // 中间值就把数组分成了两组
@@ -10,49 +12,27 @@
 
 const arr = [-9, 78, 0, 23, -567, 70]
 
-function quickSort(arr, left, right) {
-  let l = left;
-  let r = right
-  let pivot = Math.floor((left + right) / 2)
-  console.log(pivot)
-  while (l < r) {
-    while (arr[l] < arr[pivot]) {
-      l++
-    }
-    while (arr[r] > arr[pivot]) {
-      r--
-    }
-    if (l >= r) {
-      // 说明没有找到
-      break
-      // 就不会继续下面的赋值
-    }
-    let temp = null
-    temp = arr[l]
-    arr[l] = arr[r]
-    arr[r] = temp
-    r--;
-    l++;
-  }
-  // 当一轮找完后，没有找到，则是中间值时，
-  // 需要让他们穿插而过，也就是重新分组，中间值不再参与分组
-  // 否则，在某些情况下，会进入死循环
-  // * 这一步很重要 拆分左右两组
-  if (l == r) {
-    // console.log('ok')
-    l++;
-    r--;
-  }
-  // 一轮循环过后继续操作
-  // 左右两边继续排序
-  // 左边
-  if (left < r) {
-    quickSort(arr, left, r);
-  }
-  // 右边
-  if (right > l) {
-    quickSort(arr, l, right);
-  }
+// 快排=分区（partition）+递归
+// 分区操作 ===>swap操作
+// https://juejin.cn/post/6844903938915827725
+function quickSort(nums, l, r) {
+	if (l >= r) return
+	let i = l,
+		j = r
+	tmp = nums[i]
+	const pivot = l
+	while (i < j) {
+		while (nums[j] >= nums[pivot] && i < j) j--
+		while (nums[i] <= nums[pivot] && i < j) i++
+		tmp = nums[i]
+		nums[i] = nums[j]
+		nums[j] = tmp
+	}
+	// 这里是对pivot的调整
+	nums[i] = nums[l]
+	nums[l] = tmp
+	quickSort(nums, l, i - 1)
+	quickSort(nums, i + 1, r)
 }
 
 quickSort(arr, 0, arr.length - 1)
