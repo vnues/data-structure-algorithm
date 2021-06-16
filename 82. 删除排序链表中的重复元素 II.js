@@ -16,7 +16,7 @@ var deleteDuplicates = function(head) {
   }
   // 其实就是快慢指针
   // cur.next ==>slow指针
-  // cur.next.next ==>fast指针
+  // cur.next.next ==>fast指针 比slow多走一步
   const dummy = new ListNode(0, head); // 哨兵
   let cur = dummy;
   while (cur.next && cur.next.next) {
