@@ -54,6 +54,10 @@ var mergeTwoLists = function (l1, l2) {
     cur.next = l1 === null ? l2 : l1
     return preHead.next // 通过头结点指向排序好的单链表
 }
+
+
+
+
 const l1 = {
     val: 1,
     next: {
